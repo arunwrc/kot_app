@@ -1,7 +1,7 @@
 <ion-view title="Cart">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
 		<ion-list>
-            <ion-item  ng-repeat="user in users" >{{user.username}}</ion-item>
+            <ion-item  ng-repeat="user in users track by user.id" >{{user.username}}</ion-item>
         </ion-list>	
 	</ion-content>
 </ion-view>
