@@ -30,7 +30,7 @@ angular.module('app.routes', [])
     views: {
       'side-menu21': {
         templateUrl: 'templates/user.html',
-        controller: 'userCtrl'
+        controller: 'usersCtrl'
       }
     }
   })
@@ -104,6 +104,11 @@ angular.module('app.routes', [])
         controller: 'categoryItemCtrl'
       }
     }
+  })
+  .state('userform', {
+    url: '/page10',
+    templateUrl: 'templates/userform.html',
+    controller: 'userformCtrl'
   })
 
 $urlRouterProvider.otherwise('/side-menu21/page1')

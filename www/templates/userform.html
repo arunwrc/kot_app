@@ -1,0 +1,27 @@
+<ion-view title="userform">
+    <ion-content ng-controller="userCtrl" overflow-scroll="true" padding="true" class="has-header">
+        <h4>User information</h4>
+        <form class="list" name="UserInsertionForm" ng-submit="submitForm(UserInsertionForm)">
+            <label class="item item-input">
+                <span class="input-label">Name</span>
+				<input type="text" name="name" placeholder="enter name" ng-model="user.name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+				<input type="text" name="username" placeholder="enter username" ng-model="user.username">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+				<input type="password" name="password" placeholder="enter password" ng-model="user.password">
+            </label>
+            <h5>Select Usertype</h5>
+            <ion-radio name="radiobtn" value="1" ng-model="user.usertype_id">Cashier</ion-radio>
+            <ion-radio name="radiobtn" value="2" ng-model="user.usertype_id">Supplier</ion-radio>
+            <ion-radio name="radiobtn" value="3" ng-model="user.usertype_id">Manager</ion-radio>
+			<button ng-click="Manage_userdata(user);" class="button button-stable button-block">Save</button>    
+        </form>
+        
+    </ion-content>
+</ion-view>
+
+
