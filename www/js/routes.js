@@ -25,15 +25,19 @@ angular.module('app.routes', [])
     templateUrl: 'templates/cart.html',
     controller: 'cartCtrl'
   })
-
-  .state('menu.cloud', {
-    url: '/page3',
+.state('menu.user', {
+    url: '/page4',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/cloud.html',
-        controller: 'cloudCtrl'
+        templateUrl: 'templates/user.html',
+        controller: 'userCtrl'
       }
     }
+  })
+  .state('cloud', {
+    url: '/page3',
+    templateUrl: 'templates/cloud.html',
+    controller: 'cloudCtrl'
   })
 
   .state('menu', {
@@ -43,7 +47,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.orderMaster', {
-    url: '/Order/:id',
+    url: '/Order/:tableid',
     views: {
       'side-menu21': {
         templateUrl: 'templates/orderMaster.html',
@@ -62,10 +66,44 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('categories', {
+  .state('menu.categories', {
     url: '/categories',
-    templateUrl: 'templates/categories.html',
-    controller: 'categoriesCtrl'
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/categories.html',
+        controller: 'categoriesCtrl'
+      }
+    }
+  })
+
+  .state('menu.unbilledTables', {
+    url: '/unbilled',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/unbilledTables.html',
+        controller: 'unbilledTablesCtrl'
+      }
+    }
+  })
+
+  .state('menu.orders', {
+    url: '/order',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/orders.html',
+        controller: 'ordersCtrl'
+      }
+    }
+  })
+
+  .state('menu.categoryItem', {
+    url: '/item',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/categoryItem.html',
+        controller: 'categoryItemCtrl'
+      }
+    }
   })
 
 $urlRouterProvider.otherwise('/side-menu21/page1')
