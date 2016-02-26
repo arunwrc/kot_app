@@ -17,6 +17,15 @@ angular.module('app.controllers', [])
 	$http.get(base_url+"/api/v1/users/").then(function(response) {
         $scope.users = response.data.data
     });	
+    /* Delete method */
+        $scope.deleteUser = function(user,userID) {
+            console.log(user);
+            var deleteUser = confirm('Are you absolutely sure you want to delete?');
+            if (deleteUser) {
+                $http.delete(base_url+"api/v1/deleteuser/"+userID);
+            }
+        }
+    /* Delete method */
 }) 
 .controller('userCtrl', function($scope,$http) {
 	 $scope.Manage_userdata = function(user,UserInsertionForm){
@@ -25,8 +34,9 @@ angular.module('app.controllers', [])
              $scope.user = '';
 	     })
 	 };    
-})    
- 
+
+})
+
 .controller('userformCtrl', function($scope) {
 
 })

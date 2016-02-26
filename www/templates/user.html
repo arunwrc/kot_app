@@ -1,7 +1,11 @@
 <ion-view title="Cart">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
 		<ion-list>
-            <ion-item  ng-repeat="user in users track by user.id" >{{user.username}}</ion-item>
+            <ion-item  ng-repeat="user in users track by user.id" >{{user.username}}
+            <ion-option-button class="button-assertive" ng-click="deleteUser(user,user.id)">
+            <i class="icon ion-close-circled"></i>
+            </ion-option-button>
+            </ion-item>
         </ion-list>	
 	</ion-content>
 </ion-view>
