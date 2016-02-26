@@ -12,19 +12,27 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('usersCtrl', function($scope,$http,$ionicListDelegate) {
+.controller('usersCtrl', function($scope,$http,$ionicListDelegate,$ionicPopup) {
 	$scope.user = {};     
 	$http.get(base_url+"/api/v1/users/").then(function(response) {
         $scope.users = response.data.data
     });	
     /* Delete method */
         $scope.deleteUser = function(userID,index) {
-            var deleteUser = confirm('Are you absolutely sure you want to delete?');
-            if (deleteUser) {
+            var confirmDelete = $ionicPopup.confirm({
+             title: 'Delete Confirmation',
+             template: 'Are you sure you want to delete?'
+            });
+            confirmDelete.then(function(res) {
+             if(res) {
                 $http.delete(base_url+"api/v1/deleteuser/"+userID);
                 $scope.users.splice(index, 1); //instantly removes item
                 $ionicListDelegate.closeOptionButtons(); //hide the guesture after action   
-            }
+             }else{
+                $ionicListDelegate.closeOptionButtons(); //hide the guesture if cancel prompt
+             } 
+           });
+            //var deleteUser = confirm('Are you absolutely sure you want to delete?');
         }
     /* Delete method */
 }) 
