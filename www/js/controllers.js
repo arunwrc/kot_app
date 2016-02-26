@@ -12,17 +12,18 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('usersCtrl', function($scope,$http) {
+.controller('usersCtrl', function($scope,$http,$ionicListDelegate) {
 	$scope.user = {};     
 	$http.get(base_url+"/api/v1/users/").then(function(response) {
         $scope.users = response.data.data
     });	
     /* Delete method */
-        $scope.deleteUser = function(user,userID) {
-            console.log(user);
+        $scope.deleteUser = function(userID,index) {
             var deleteUser = confirm('Are you absolutely sure you want to delete?');
             if (deleteUser) {
                 $http.delete(base_url+"api/v1/deleteuser/"+userID);
+                $scope.users.splice(index, 1); //instantly removes item
+                $ionicListDelegate.closeOptionButtons(); //hide the guesture after action   
             }
         }
     /* Delete method */
