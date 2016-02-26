@@ -29,10 +29,9 @@ angular.module('app.controllers', [])
                 $scope.users.splice(index, 1); //instantly removes item
                 $ionicListDelegate.closeOptionButtons(); //hide the guesture after action   
              }else{
-                $ionicListDelegate.closeOptionButtons(); //hide the guesture if cancel prompt
+                $ionicListDelegate.closeOptionButtons(); //hide the guesture on prompt cancel
              } 
            });
-            //var deleteUser = confirm('Are you absolutely sure you want to delete?');
         }
     /* Delete method */
 }) 
@@ -43,7 +42,6 @@ angular.module('app.controllers', [])
              $scope.user = '';
 	     })
 	 };    
-
 })
 
 .controller('userformCtrl', function($scope) {
