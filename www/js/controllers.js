@@ -12,6 +12,10 @@ angular.module('app.controllers', [])
 
 })
 
+.controller('userEditCtrl', function($scope) {
+    console.log("UserEdit");
+})
+
 .controller('usersCtrl', function($scope,$http,$ionicListDelegate,$ionicPopup,$ionicActionSheet) {
 	$scope.user = {};     
 	$http.get(base_url+"api/v1/users/").then(function(response) {
@@ -78,6 +82,12 @@ angular.module('app.controllers', [])
              $scope.user = '';
 	     })
 	 };    
+})
+
+.controller('userEditCtrl', function($scope,$http) {
+	 $scope.edit = function(userID) {
+      alert(userID);
+    }
 })
 
 .controller('userformCtrl', function($scope) {

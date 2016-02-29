@@ -2,13 +2,11 @@
     <ion-content overflow-scroll="true" padding="true" class="has-header">
 		<ion-list>
             <ion-item  ng-repeat="user in users track by user.id" >{{user.name}}
-                <span class="item-note">
-                  {{user.created_at}}
-                </span>
+                <span class="item-note">{{user.created_at}}</span>
             <ion-option-button class="button-assertive" ng-click="deleteUser(user.id,$index)">
                 <i class="icon ion-minus-circled"></i>
             </ion-option-button>
-            <ion-option-button class="button-energized" ng-click="editUser(user.id,$index)">
+            <ion-option-button ng-controller="userEditCtrl" ng-click="edit(user.id)" class="button-energized">
                 <i class="icon ion-edit"></i>
             </ion-option-button>    
             </ion-item>
