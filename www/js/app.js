@@ -6,6 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var base_url = "http://kot-api.local/";
+var isIOS = ionic.Platform.isIOS();
+var isAndroid = ionic.Platform.isAndroid();
+    
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
 
 .run(function($ionicPlatform) {
