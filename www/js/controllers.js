@@ -14,7 +14,7 @@ angular.module('app.controllers', [])
 
 .controller('usersCtrl', function($scope,$http,$ionicListDelegate,$ionicPopup,$ionicActionSheet) {
 	$scope.user = {};     
-	$http.get(base_url+"/api/v1/users/").then(function(response) {
+	$http.get(base_url+"api/v1/users/").then(function(response) {
         $scope.users = response.data.data
     });	
     /* Delete method */
@@ -50,6 +50,20 @@ angular.module('app.controllers', [])
                   hideSheet();
                 }
             });
+        }else{ //only for browser testing
+            var confirmDelete = $ionicPopup.confirm({
+             title: 'Delete Confirmation',
+             template: 'Are you sure you want to delete?'
+            });
+            confirmDelete.then(function(res) {
+             if(res) {
+                $http.delete(base_url+"api/v1/deleteuser/"+userID);
+                $scope.users.splice(index, 1); //instantly removes item
+                $ionicListDelegate.closeOptionButtons(); //hide the guesture after action   
+             }else{
+                $ionicListDelegate.closeOptionButtons(); //hide the guesture on prompt cancel
+             } 
+           });
         }
         
    
@@ -59,7 +73,7 @@ angular.module('app.controllers', [])
 }) 
 .controller('userCtrl', function($scope,$http) {
 	 $scope.Manage_userdata = function(user,UserInsertionForm){
-	     $http.post(base_url+'api/v1/addusername', user).then(function(response){
+	     $http.post(base_url+'api/v1/adduser', user).then(function(response){
 	         $scope.response = response.data.resp_msg;   
              $scope.user = '';
 	     })
